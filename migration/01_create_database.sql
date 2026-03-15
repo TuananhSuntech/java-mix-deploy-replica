@@ -1,0 +1,1 @@
+SELECT 'Database demo already created by docker-compose POSTGRES_DB env var';
