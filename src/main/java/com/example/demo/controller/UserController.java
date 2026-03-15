@@ -17,7 +17,7 @@ public class UserController {
 
     @GetMapping("/hello")
     public String hello() {
-        return "Hello World 2";
+        return "Hello World 3";
     }
 
     @PostMapping("/users")

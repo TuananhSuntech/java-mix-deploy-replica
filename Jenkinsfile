@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    triggers {
+        pollSCM('H/2 * * * *')  // Check GitHub every 2 minutes
+    }
+
     environment {
         DOCKER_IMAGE      = 'java-mix-deploy-replica'
         REGISTRY          = 'anh2019'
