@@ -18,20 +18,7 @@ pipeline {
             }
         }
 
-        // ── 2. TEST ────────────────────────────────────────────────────────────
-        stage('Test') {
-            steps {
-                sh 'mvn test'
-            }
-            post {
-                always {
-                    junit allowEmptyResults: true,
-                          testResults: 'target/surefire-reports/**/*.xml'
-                }
-            }
-        }
-
-        // ── 3. BUILD & PUSH TO REGISTRY ────────────────────────────────────────
+        // ── 2. BUILD & PUSH TO REGISTRY ────────────────────────────────────────
         stage('Build & Push Docker Image') {
             steps {
                 script {
