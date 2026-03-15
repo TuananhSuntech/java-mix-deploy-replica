@@ -1,10 +1,6 @@
 pipeline {
     agent any
 
-    triggers {
-        pollSCM('H/2 * * * *')  // Check GitHub every 2 minutes
-    }
-
     environment {
         DOCKER_IMAGE      = 'java-mix-deploy-replica'
         REGISTRY          = 'anh2019'
@@ -24,12 +20,6 @@ pipeline {
 
         // ── 2. TEST ────────────────────────────────────────────────────────────
         stage('Test') {
-            agent {
-                docker {
-                    image 'maven:3.9.6-eclipse-temurin-17'
-                    args '-v $HOME/.m2:/root/.m2'
-                }
-            }
             steps {
                 sh 'mvn test'
             }
